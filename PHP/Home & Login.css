@@ -1,0 +1,141 @@
+:root{
+  --pink-1:#ffe6f1;
+  --pink-2:#ffc7df;
+  --pink-3:#ff8fc4;
+  --purple:#b9a2ff;
+  --mint:#bff2d8;
+
+  --ink:#1e4d3f;
+  --white:#ffffff;
+
+  --glass:rgba(255,255,255,0.28);
+  --border:rgba(255,255,255,0.35);
+  --shadow:rgba(53,22,72,0.18);
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:"Outfit",Arial,sans-serif;
+  color:var(--ink);
+  background:
+  radial-gradient(circle at 12% 10%,var(--pink-1),transparent 55%),
+  radial-gradient(circle at 88% 18%,rgba(185,162,255,0.45),transparent 55%),
+  radial-gradient(circle at 30% 95%,rgba(191,242,216,0.55),transparent 52%),
+  linear-gradient(135deg,var(--pink-1),var(--pink-2));
+  background-attachment:fixed;
+}
+
+
+
+header{
+  text-align:center;
+  padding:26px 16px;
+}
+
+header h1{
+  font-family:"Playfair Display",serif;
+  font-size:3rem;
+  margin:0;
+}
+
+header p{
+  opacity:.8;
+}
+
+
+
+.siteNav{
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.siteNav ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.siteNav li{
+  display: inline-block;
+  margin: 0 12px;
+}
+
+.siteNav a{
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 10px 26px var(--shadow);
+  transition: 0.25s;
+  font-weight: 600;
+}
+
+.siteNav a:hover{
+  transform: translateY(-2px);
+  background: linear-gradient(
+    135deg,
+    rgba(255,143,196,0.35),
+    rgba(185,162,255,0.35)
+  );
+}
+
+
+.container{
+  width:85%;
+  max-width:900px;
+  margin:30px auto;
+  padding:25px;
+  border-radius:20px;
+  background:var(--glass);
+  border:1px solid var(--border);
+  backdrop-filter:blur(14px);
+  box-shadow:0 18px 50px var(--shadow);
+}
+
+
+
+form{
+  margin-top:15px;
+}
+
+label{
+  display:block;
+  margin-top:12px;
+  font-weight:600;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.6);
+  background:rgba(255,255,255,0.55);
+}
+
+
+
+button{
+  margin-top:18px;
+  padding:10px 18px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--pink-3),var(--purple));
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+
+
+
+footer{
+  text-align:center;
+  padding:15px;
+  margin-top:30px;
+  background:rgba(255,255,255,0.22);
+  border-top:1px solid var(--border);
+}
