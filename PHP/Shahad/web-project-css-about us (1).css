@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap');
+
+:root{
+  --pink-1:#ffe6f1;
+  --pink-2:#ffc7df;
+  --pink-3:#ff8fc4;
+  --purple:#b9a2ff;
+  --ink:#1e4d3f;
+  --glass: rgba(255,255,255,0.28);
+  --border: rgba(255,255,255,0.35);
+  --shadow: rgba(53, 22, 72, 0.18);
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  font-family:"Poppins", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 10%, var(--pink-1), transparent 55%),
+    radial-gradient(circle at 88% 18%, rgba(185,162,255,0.45), transparent 55%),
+    radial-gradient(circle at 30% 95%, rgba(191,242,216,0.55), transparent 52%),
+    linear-gradient(135deg, var(--pink-1), var(--pink-2));
+  background-attachment: fixed;
+}
+
+.siteHeader{
+  text-align: center;
+  padding: 40px 16px 25px;
+}
+
+.logo{
+  width: 320px;
+  height: 150px;
+  object-fit: cover;
+  object-position: left;
+  display: block;
+  margin: 0 auto 18px;
+  filter: drop-shadow(0 22px 40px rgba(255,143,196,0.45))
+          drop-shadow(0 10px 22px rgba(185,162,255,0.35));
+  animation: logoFloat 2.8s ease-in-out infinite;
+}
+
+@keyframes logoFloat{
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-6px); }
+}
+
+.tagline{
+  margin: 8px 0 0;
+  font-size: 1.05rem;
+  opacity: 0.85;
+}
+
+.container{
+  width: 88%;
+  max-width: 920px;
+  margin: 24px auto 34px;
+  padding: 22px;
+  border-radius: 22px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 50px var(--shadow);
+}
+
+.aboutSection{
+  padding: 18px 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  transition: transform 0.3s ease;
+}
+
+.aboutSection:last-child{
+  border-bottom: none;
+}
+
+.aboutSection p{
+  margin: 0;
+  opacity: 0.92;
+}
+
+h2{
+  font-family: "Playfair Display", serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px;
+}
+
+h2::after{
+  content:"";
+  display:block;
+  width: 170px;
+  height: 5px;
+  margin-top: 10px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--pink-3), var(--purple));
+  box-shadow: 0 10px 22px rgba(255,143,196,0.25);
+  opacity: 0.95;
+  transition: width 0.25s ease;
+}
+
+.aboutSection:hover h2::after{
+  width: 240px;
+}
+
+.aboutList{
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+.aboutList li{
+  margin: 6px 0;
+}
+
+.faqItem{
+  margin: 12px 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.35);
+  border: 1px solid rgba(255,255,255,0.5);
+  overflow: hidden;
+}
+
+.faqItem summary{
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+.faqItem summary::before{
+  content: "➤";
+  margin-right: 8px;
+  color: var(--pink-3);
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.faqItem[open] summary::before{
+  transform: rotate(90deg);
+}
+
+.faqItem p{
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.45s ease, opacity 0.35s ease, transform 0.35s ease, margin 0.35s ease;
+}
+
+.faqItem[open] p{
+  max-height: 180px;
+  opacity: 0.95;
+  margin-top: 10px;
+  transform: translateY(0);
+}
+
+.socialRow{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.socialLink{
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 10px 26px var(--shadow);
+  transition: transform 0.25s;
+  font-weight: 700;
+}
+
+.socialLink:hover{
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, rgba(255,143,196,0.35), rgba(185,162,255,0.35));
+}
+
+.siteFooter{
+  text-align:center;
+  padding: 14px;
+  background: rgba(255,255,255,0.22);
+  border-top: 1px solid var(--border);
+  opacity: 0.9;
+}
+.navBar{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.navBar span,
+.navBar a{
+  margin:0 15px;
+  font-weight:bold;
+  text-decoration:none;
+  color:#1e4d3f;
+}
+
+.pill{
+  display:inline-block;
+  padding:8px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  color:var(--ink);
+  background:rgba(255,255,255,0.50);
+  border:1px solid rgba(255,255,255,0.60);
+  font-weight:600;
+  font-size:0.88rem;
+  transition:0.22s;
+  margin:0 4px;
+}
+
+.pill:hover,
+.pill.active{
+  background:linear-gradient(135deg,rgba(255,143,196,0.40),rgba(185,162,255,0.40));
+  transform:translateY(-2px);
+}
