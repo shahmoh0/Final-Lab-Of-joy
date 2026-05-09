@@ -6,7 +6,7 @@ $db  = getDB();
 $msg = '';
 $err = '';
 
-// Handle DELETE
+// DELETE
 if (isset($_GET['delete'])) {
     $id = (int) $_GET['delete'];
     // Prevent delete if products exist under this category
@@ -20,7 +20,7 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// Handle ADD / EDIT submit
+//  ADD / EDIT submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $icon = trim($_POST['icon'] ?? '');
