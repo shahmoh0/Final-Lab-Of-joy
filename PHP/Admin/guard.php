@@ -1,5 +1,5 @@
 <?php
-// Load DB and session, then verify admin access
+// Load DB and session then verify admin access
 require_once __DIR__ . '/../includes/db.php';
 require_once __DIR__ . '/../includes/session.php';
 
