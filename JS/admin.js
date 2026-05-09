@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Client-side validation for category form
+    // Client side validation for category form
     const catForm = document.getElementById('catForm');
     if (catForm) {
         catForm.addEventListener('submit', (e) => {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Client-side validation for product form
+    // Client side validation for product form
     const prodForm = document.getElementById('prodForm');
     if (prodForm) {
         prodForm.addEventListener('submit', (e) => {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Auto-hide alert messages after 4 seconds
+    // Auto hide alert messages after 4 seconds
     document.querySelectorAll('.alert').forEach(alert => {
         setTimeout(() => {
             alert.style.transition = 'opacity 0.8s';
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 4000);
     });
 
-    // Client-side validation for user form
+    // Client side validation for user form
     const userForm = document.getElementById('userForm');
     if (userForm) {
         userForm.addEventListener('submit', (e) => {
