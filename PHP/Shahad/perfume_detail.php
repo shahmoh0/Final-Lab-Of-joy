@@ -27,7 +27,7 @@ if (!$product) {
     exit;
 }
 
-// Handle add to cart
+// add to cart
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $qty = max(1, min(10, (int) ($_POST['quantity'] ?? 1)));
     addToCart($userId, $productId, $qty);
