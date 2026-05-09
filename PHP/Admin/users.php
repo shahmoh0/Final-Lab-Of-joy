@@ -6,7 +6,7 @@ $db  = getDB();
 $msg = '';
 $err = '';
 
-// Handle DELETE user
+//DELETE user
 if (isset($_GET['delete'])) {
     $delId = (int) $_GET['delete'];
     // Prevent deleting yourself
@@ -18,7 +18,7 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// Handle toggle admin flag
+// toggle admin flag
 if (isset($_GET['toggle_admin'])) {
     $togId = (int) $_GET['toggle_admin'];
     if ($togId === getUserId()) {
@@ -29,7 +29,7 @@ if (isset($_GET['toggle_admin'])) {
     }
 }
 
-// Handle ADD user via POST
+//ADD user via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
     $name    = trim($_POST['full_name'] ?? '');
     $email   = trim($_POST['email']    ?? '');
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_user'])) {
     }
 }
 
-// Handle EDIT user via POST
+// EDIT user via POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_user'])) {
     $editId  = (int)   $_POST['user_id'];
     $name    = trim($_POST['full_name'] ?? '');
