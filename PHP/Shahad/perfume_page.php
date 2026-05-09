@@ -5,14 +5,14 @@ requireLogin();
 
 $userId = getUserId();
 
-// Handle add to cart
+// add to cart
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     addToCart($userId, (int) $_POST['product_id']);
     header('Location: perfume_page.php?added=1');
     exit;
 }
 
-// Fetch perfumes, filter by search if provided
+// Fetch perfumes filter by search if provided
 $search = trim($_GET['q'] ?? '');
 if ($search !== '') {
     $stmt = getDB()->prepare(
