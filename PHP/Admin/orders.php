@@ -6,7 +6,7 @@ $db  = getDB();
 $msg = '';
 $err = '';
 
-// Handle status update
+// status update
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'])) {
     $orderId   = (int) $_POST['order_id'];
     $newStatus = $_POST['status'] ?? '';
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'])) {
     }
 }
 
-// Handle DELETE
+// DELETE
 if (isset($_GET['delete'])) {
     $db->prepare('DELETE FROM orders WHERE id = ?')->execute([(int)$_GET['delete']]);
     $msg = 'Order deleted.';
