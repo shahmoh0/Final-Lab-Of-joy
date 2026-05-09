@@ -6,13 +6,13 @@ $db  = getDB();
 $msg = '';
 $err = '';
 
-// Handle DELETE
+// DELETE
 if (isset($_GET['delete'])) {
     $db->prepare('DELETE FROM products WHERE id = ?')->execute([(int)$_GET['delete']]);
     $msg = 'Product deleted.';
 }
 
-// Handle ADD / EDIT submit
+// ADD / EDIT submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $catId  = (int)   ($_POST['category_id'] ?? 0);
     $name   = trim($_POST['name']        ?? '');
