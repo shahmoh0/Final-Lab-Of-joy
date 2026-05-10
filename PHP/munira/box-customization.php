@@ -44,6 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_custom'])) {
         }
         $_SESSION['customization_id'] = $customId;
         $saved = true;
+        if ($saved && isset($_POST['save_custom'])) {
+        header('Location: message.php');
+        exit;
+        }
         $existing->execute([$userId]);
         $custom = $existing->fetch() ?: [];
     }
@@ -62,6 +66,8 @@ $budget    = (float) ($custom['budget'] ?? 200);
   <title>Lab of JOY | Box Customization</title>
   <link rel="stylesheet" href="labofjoy.css" />
   <script src="customization.js" defer></script>
+  <link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+  <script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 <body>
   <div class="wrap">
@@ -73,12 +79,11 @@ $budget    = (float) ($custom['budget'] ?? 200);
 
 <nav class="navBar">
 
+
 <a class="pill" href="/LabOfJoy/aljury/categories.php">Categories</a>
-<a class="pill active" href="box-customization.php">Box Customization</a>
+<a class="pill" href="/LabOfJoy/munira/box-customization.php">Box Customization</a>
 <a class="pill" href="/LabOfJoy/shahad/about.php">About Us</a>
-
-<a class="pill" href="/LabOfJoy/jana/cart.php">Cart</a>
-
+<a class="pill" href="/LabOfJoy/jana/cart.php">🛒 Cart </a>
 
 </nav>
 
@@ -153,10 +158,14 @@ $budget    = (float) ($custom['budget'] ?? 200);
             </div>
 
             <div class="actions">
-              <button class="btn ghost" type="submit" name="save_custom" value="1">Save Choices</button>
-              <a class="btn" href="message.php">Continue to Message →</a>
-              <button class="btn ghost" type="reset">Reset Items</button>
-            </div>
+    <button class="btn ghost" type="submit" name="save_custom" value="1">Save Choices</button>
+    
+    <button type="submit" name="save_custom" value="1" class="btn" onclick="this.form.action='box-customization.php';">
+        Save & Continue to Message →
+    </button>
+    
+    <button class="btn ghost" type="reset">Reset Items</button>
+</div>
           </form>
 
           <div class="summary-box" style="margin-top:12px;">
