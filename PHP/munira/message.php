@@ -42,18 +42,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!in_array($cardStyle, $allowedStyles, true)) {
         $error = 'Invalid card style.';
     } else {
-        // التحقق مما إذا كانت الرسالة موجودة مسبقاً لتحديثها أو إنشائها
         if (!empty($card['id'])) {
-            $db->prepare('UPDATE message_cards SET message_text=?, font_type=?, font_color=?, card_style=? WHERE id=?')
+            $db->prepare('UPDATE message_cards SET message_text=?,font_type=?,font_color=?,card_style=? WHERE id=?')
                ->execute([$text, $fontType, $fontColor, $cardStyle, $card['id']]);
         } else {
-            $db->prepare('INSERT INTO message_cards (customization_id, message_text, font_type, font_color, card_style) VALUES (?,?,?,?,?)')
+            $db->prepare('INSERT INTO message_cards (customization_id,message_text,font_type,font_color,card_style) VALUES (?,?,?,?,?)')
                ->execute([$customId, $text, $fontType, $fontColor, $cardStyle]);
         }
-
-        // التوجيه المباشر إلى صفحة التشك أوت بعد الحفظ الناجح
-        header('Location: /LabOfJoy/lubna/checkout.php');
-        exit;
+        $saved = true;
+        if ($saved) {
+           
+            header('Location: ../lubna/checkout.php');
+            exit;
+        }
+        $msgRow->execute([$customId]);
+        $card = $msgRow->fetch() ?: [];
     }
 }
 
@@ -71,6 +74,8 @@ $previewStyle = htmlspecialchars($card['card_style']   ?? 'Classic', ENT_QUOTES,
   <title>Lab of JOY | Message</title>
   <link rel="stylesheet" href="labofjoy.css" />
   <script src="message.js" defer></script>
+  <link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+  <script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 <body>
   <div class="wrap">
@@ -93,6 +98,9 @@ $previewStyle = htmlspecialchars($card['card_style']   ?? 'Classic', ENT_QUOTES,
 
       <?php if ($error): ?>
           <p style="color:red;"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
+      <?php endif; ?>
+      <?php if ($saved): ?>
+          <p style="color:green;">✔ Message saved!</p>
       <?php endif; ?>
 
       <div class="grid-2">
