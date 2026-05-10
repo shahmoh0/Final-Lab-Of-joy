@@ -5,9 +5,26 @@ requireLogin();
 
 $userId = getUserId();
 
-// Handle remove item from cart
+// Handle remove single item
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_id'])) {
     removeFromCart((int) $_POST['remove_id'], $userId);
+    header('Location: cart.php');
+    exit;
+}
+
+// Handle update quantity
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_qty'])) {
+    $cartId = (int) $_POST['cart_id'];
+    $qty    = max(1, (int) $_POST['quantity']);
+    getDB()->prepare('UPDATE cart_items SET quantity=? WHERE id=? AND user_id=?')
+           ->execute([$qty, $cartId, $userId]);
+    header('Location: cart.php');
+    exit;
+}
+
+// Handle empty entire cart
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['empty_cart'])) {
+    getDB()->prepare('DELETE FROM cart_items WHERE user_id=?')->execute([$userId]);
     header('Location: cart.php');
     exit;
 }
@@ -31,6 +48,8 @@ $count = array_sum(array_column($items, 'quantity'));
 <title>Lab of Joy - Cart</title>
 <link rel="stylesheet" href="style.css">
 <script src="cart.js" defer></script>
+<link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+<script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 
 <body>
@@ -45,41 +64,65 @@ $count = array_sum(array_column($items, 'quantity'));
 <div class="grid">
 
 <div class="card">
-<h2 class="h-title">Your Cart</h2>
-<p class="h-sub">Review your selected gifts before checkout.</p>
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:6px;">
+    <h2 class="h-title">Your Cart 🛒</h2>
+    <?php if (!empty($items)): ?>
+    <form method="POST" action="cart.php" id="emptyCartForm">
+        <input type="hidden" name="empty_cart" value="1">
+        <button type="submit" class="btn ghost" style="padding:6px 14px;font-size:0.82rem;color:#ff3b6b;border-color:#ff3b6b;">
+            🗑 Empty Cart
+        </button>
+    </form>
+    <?php endif; ?>
+</div>
+<p class="h-sub">Review, update quantities, or remove gifts.</p>
 
 <?php if (empty($items)): ?>
 <div class="empty-cart">
 <h3>Your cart is empty 🛒</h3>
 <p>Start adding gifts to create your joyful box.</p>
-
 <div class="btns">
 <a href="/LabOfJoy/aljury/categories.php" class="btn btn-primary">Start Shopping</a>
 </div>
 </div>
 
 <?php else: ?>
-<table style="width:100%;border-collapse:collapse;margin-top:10px;">
+<table class="cartTable">
 <thead>
 <tr>
-  <th style="text-align:left;padding:8px;">Item</th>
-  <th style="padding:8px;">Qty</th>
-  <th style="padding:8px;">Price</th>
-  <th style="padding:8px;">Subtotal</th>
-  <th style="padding:8px;"></th>
+  <th style="text-align:left;">Item</th>
+  <th>Price</th>
+  <th>Qty</th>
+  <th>Subtotal</th>
+  <th></th>
 </tr>
 </thead>
 <tbody>
 <?php foreach ($items as $item): ?>
 <tr>
-  <td style="padding:8px;"><?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?></td>
-  <td style="text-align:center;padding:8px;"><?= (int)$item['quantity'] ?></td>
-  <td style="text-align:center;padding:8px;"><?= number_format($item['price'], 2) ?> SAR</td>
-  <td style="text-align:center;padding:8px;"><?= number_format($item['subtotal'], 2) ?> SAR</td>
-  <td style="padding:8px;">
+  <td><?= htmlspecialchars($item['name'], ENT_QUOTES, 'UTF-8') ?></td>
+  <td><?= number_format($item['price'], 2) ?> SAR</td>
+
+  <!-- Quantity update form -->
+  <td>
+    <form method="POST" action="cart.php" class="qty-form">
+      <input type="hidden" name="update_qty" value="1">
+      <input type="hidden" name="cart_id" value="<?= (int)$item['id'] ?>">
+      <div style="display:flex;align-items:center;gap:4px;">
+        <input type="number" name="quantity" value="<?= (int)$item['quantity'] ?>"
+               min="1" class="qty-input" aria-label="Quantity">
+        <button type="submit" class="btn ghost btn-xs" title="Update">✓</button>
+      </div>
+    </form>
+  </td>
+
+  <td><?= number_format($item['subtotal'], 2) ?> SAR</td>
+
+  <!-- Remove item form -->
+  <td>
     <form method="POST" action="cart.php" class="remove-form">
       <input type="hidden" name="remove_id" value="<?= (int)$item['id'] ?>">
-      <button type="submit" class="btn ghost" style="padding:6px 12px;">Remove</button>
+      <button type="submit" class="btn ghost btn-xs" style="color:#ff3b6b;" title="Remove">✕</button>
     </form>
   </td>
 </tr>
@@ -93,7 +136,7 @@ $count = array_sum(array_column($items, 'quantity'));
 <div class="card">
 
 <h2 class="h-title">Summary</h2>
-<p class="h-sub">Check your budget and total price.</p>
+<p class="h-sub">Check your total before checkout.</p>
 
 <div class="total-box">
 
@@ -117,10 +160,11 @@ $count = array_sum(array_column($items, 'quantity'));
 </div>
 
 <?php if (!empty($items)): ?>
-<nav class="btns" style="margin-top:14px;">
-<a href="/LabOfJoy/lubna/checkout.php" class="btn btn-primary" style="width:100%;display:block;text-align:center;text-decoration:none;">
-  Proceed to Checkout
-</a>
+<nav class="btns" style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
+    <a href="/LabOfJoy/lubna/checkout.php" class="btn btn-primary" style="width:100%;display:block;text-align:center;text-decoration:none;">
+        🛍 Proceed to Checkout
+    </a>
+   
 </nav>
 <?php endif; ?>
 
