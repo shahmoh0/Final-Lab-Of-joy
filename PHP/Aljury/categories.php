@@ -25,6 +25,8 @@ $wRainChance  = $weather['hourly']['precipitation_probability'][$currentHour] ??
     <title>Lab of JOY - Categories</title>
     <link rel="stylesheet" href="categories.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+    <script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 <body>
 
@@ -52,14 +54,14 @@ $wRainChance  = $weather['hourly']['precipitation_probability'][$currentHour] ??
     <?php endif; ?>
 
     <nav class="navBar">
-     
-        <a class="pill active" href="categories.php">Categories</a>
-        <a class="pill" href="/LabOfJoy/munira/box-customization.php">Box Customization</a>
-       
-        <a class="pill" href="/LabOfJoy/shahad/about.php">About Us</a>
-        <a class="pill" href="/LabOfJoy/weather.php">🌤️ Weather</a>
-         <a class="pill" href="/LabOfJoy/jana/cart.php">Cart (<?= $cartCount ?>)</a>
-        <a class="pill" href="/LabOfJoy/fatimah/logout.php">Logout</a>
+ 
+    <a class="pill" href="categories.php">Categories</a>
+    <a class="pill" href="/LabOfJoy/munira/box-customization.php">Box Customization</a>
+    <a class="pill" href="/LabOfJoy/shahad/about.php">About Us</a>
+    <a class="pill" href="/LabOfJoy/weather.php">🌤️ Weather</a>
+    <a class="pill" href="/LabOfJoy/jana/cart.php">🛒 Cart (<?= $cartCount ?>)</a>
+    <a class="pill" href="/LabOfJoy/fatimah/logout.php">Logout</a>
+    
     </nav>
 </header>
 
@@ -103,6 +105,32 @@ $wRainChance  = $weather['hourly']['precipitation_probability'][$currentHour] ??
 <footer class="siteFooter">
     <p>&copy; 2026 Lab of JOY</p>
 </footer>
+<div id="helpSection">
+    <button class="help-btn" onclick="toggleHelp()">?</button>
+    <div id="helpMenu" class="help-menu">
+        <h3>Need Help? ✨</h3>
+        <p>Using our website is super easy! ✨</p>
+        <ul>
+            <li><b>1.</b> Choose a category.</li>
+            <li><b>2.</b> Select your gifts.</li>
+            <li><b>3.</b> Complete your joy box!</li>
+        </ul>
+        <small>For more information,</small>
+        <a href="/LabOfJoy/shahad/about.php" style="color: #ff69b4; font-weight: bold; text-decoration: underline;">
+                Visit About Us </a>
+        <button class="close-btn" onclick="toggleHelp()">Close</button>
+    </div>
+</div>
 
+<script>
+function toggleHelp() {
+    var menu = document.getElementById("helpMenu");
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+}
+</script>
 </body>
 </html>
