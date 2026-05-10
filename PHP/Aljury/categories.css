@@ -199,3 +199,66 @@ body {
   margin-bottom: 14px;
   display: block;
 }
+/* Floating Help Button Styling */
+.help-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #ff69b4; /* Pink theme for Lab of Joy */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 9999; /* To stay above everything */
+}
+
+.help-menu {
+    display: none;
+    position: fixed;
+    bottom: 85px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 2px solid #ff69b4;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 9999;
+    text-align: left; /* English alignment */
+    font-family: Arial, sans-serif;
+}
+
+.help-menu h3 {
+    margin-top: 0;
+    color: #ff69b4;
+}
+
+.help-menu ul {
+    padding-left: 20px;
+    margin: 15px 0;
+}
+
+.help-menu li {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.close-btn {
+    background: #f0f0f0;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.close-btn:hover {
+    background: #e0e0e0;
+}
