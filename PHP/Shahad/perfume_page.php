@@ -5,14 +5,14 @@ requireLogin();
 
 $userId = getUserId();
 
-// add to cart
+// Handle add to cart
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) {
     addToCart($userId, (int) $_POST['product_id']);
     header('Location: perfume_page.php?added=1');
     exit;
 }
 
-// Fetch perfumes filter by search if provided
+// Fetch perfumes, filter by search if provided
 $search = trim($_GET['q'] ?? '');
 if ($search !== '') {
     $stmt = getDB()->prepare(
@@ -45,6 +45,8 @@ $badges = [
   <title>Perfumes - Lab of Joy</title>
   <link rel="stylesheet" href="perfum page.css">
   <script src="perfume_search.js" defer></script>
+  <link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+  <script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 <body>
 
@@ -54,11 +56,10 @@ $badges = [
   </header>
 
   <nav class="navBar">
-
 <a class="pill" href="/LabOfJoy/aljury/categories.php">Categories</a>
 <a class="pill" href="/LabOfJoy/munira/box-customization.php">Box Customization</a>
-<a class="pill" href="about.php">About Us</a>
-<a class="pill" href="/LabOfJoy/jana/cart.php">Cart (<?= $cartCount ?>)</a>
+<a class="pill" href="/LabOfJoy/shahad/about.php">About Us</a>
+<a class="pill" href="/LabOfJoy/jana/cart.php">🛒 Cart (<?= $cartCount ?>)</a>
 
 </nav>
 
@@ -77,14 +78,7 @@ $badges = [
     </div>
     </form>
 
-    <div class="filters">
-      <span>All</span>
-      <span>Floral</span>
-      <span>Sweet</span>
-      <span>Soft</span>
-      <span>Luxury</span>
-    </div>
-
+   
     <div class="perfumeGrid">
 
       <?php foreach ($products as $p): ?>
