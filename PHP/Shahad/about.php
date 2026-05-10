@@ -9,6 +9,8 @@ requireLogin();
   <meta charset="UTF-8">
   <title>About Us - Lab of Joy</title>
   <link rel="stylesheet" href="web-project-css-about us (1).css">
+  <link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+  <script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 
 <body>
@@ -19,11 +21,10 @@ requireLogin();
   </header>
 
  <nav class="navBar">
-
 <a class="pill" href="/LabOfJoy/aljury/categories.php">Categories</a>
 <a class="pill" href="/LabOfJoy/munira/box-customization.php">Box Customization</a>
-<a class="pill active" href="about.php">About Us</a>
-<a class="pill" href="/LabOfJoy/jana/cart.php">Cart</a>
+<a class="pill" href="/LabOfJoy/shahad/about.php">About Us</a>
+<a class="pill" href="/LabOfJoy/jana/cart.php">🛒 Cart </a>
 
 </nav>
 
@@ -81,9 +82,63 @@ requireLogin();
 
     <section class="aboutSection">
       <h2>Contact Us</h2>
-      <p>Email: info@labofjoy.com</p>
-      <p>Phone: +966 5 123 4567</p>
-      <p>Website: www.labofjoy.com</p>
+
+      <div class="contactGrid">
+
+        <!-- Address & contact details -->
+        <div class="contactDetails">
+          <div class="contactItem">
+            <span class="contactIcon">📍</span>
+            <div>
+              <strong>Address</strong>
+              <p>King Fahd Street, Al Jubail Industrial City<br>Eastern Province, Saudi Arabia</p>
+            </div>
+          </div>
+          <div class="contactItem">
+            <span class="contactIcon">📞</span>
+            <div>
+              <strong>Phone</strong>
+              <p>+966 5 123 4567</p>
+            </div>
+          </div>
+          <div class="contactItem">
+            <span class="contactIcon">📧</span>
+            <div>
+              <strong>Email</strong>
+              <p>info@labofjoy.com</p>
+            </div>
+          </div>
+          <div class="contactItem">
+            <span class="contactIcon">🌐</span>
+            <div>
+              <strong>Website</strong>
+              <p>www.labofjoy.com</p>
+            </div>
+          </div>
+          <div class="contactItem">
+            <span class="contactIcon">⏰</span>
+            <div>
+              <strong>Working Hours</strong>
+              <p>Sat – Thu: 9:00 AM – 10:00 PM<br>Friday: 4:00 PM – 10:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Maps embed for Jubail, Saudi Arabia -->
+        <div class="mapWrapper">
+          <iframe
+            title="Lab of Joy Location — Jubail, Saudi Arabia"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57868.45!2d49.6580!3d27.0046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e35e5b5b5b5b5b5%3A0x0!2sJubail%2C+Saudi+Arabia!5e0!3m2!1sen!2ssa!4v1700000000000"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+      </div>
     </section>
 
     <section class="aboutSection">
