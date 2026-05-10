@@ -11,6 +11,8 @@ if (isLoggedIn()) {
 <head>
     <title>Lab of Joy</title>
     <link rel="stylesheet" href="/LabOfJoy/fatimah/Home%20%26%20Login.css">
+    <link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+    <script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 <body>
 
