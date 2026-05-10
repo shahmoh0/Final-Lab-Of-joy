@@ -30,6 +30,8 @@ $cartCount = getCartCount();
     <link href="https://fonts.googleapis.com/css2?family=Outfit&family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="chocolate.css">
     <script src="product_actions.js" defer></script>
+    <link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+    <script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 
 <body>
@@ -38,11 +40,10 @@ $cartCount = getCartCount();
     <h2>Chocolate Collection </h2>
 
 <nav class="navBar">
-
 <a class="pill" href="/LabOfJoy/aljury/categories.php">Categories</a>
 <a class="pill" href="/LabOfJoy/munira/box-customization.php">Box Customization</a>
 <a class="pill" href="/LabOfJoy/shahad/about.php">About Us</a>
-<a class="pill" href="/LabOfJoy/jana/cart.php">Cart (<?= $cartCount ?>)</a>
+<a class="pill" href="/LabOfJoy/jana/cart.php">🛒 Cart (<?= $cartCount ?>)</a>
 
 </nav>
 
@@ -54,7 +55,7 @@ $cartCount = getCartCount();
 
         <?php foreach ($products as $p): ?>
         <div class="card">
-            <img src="images/<?=htmlspecialchars($p['image'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
+            <img src="images/<?= htmlspecialchars($p['image'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
                  alt="<?= htmlspecialchars($p['name'], ENT_QUOTES, 'UTF-8') ?>"
                  onerror="this.style.display='none'">
             <h3><?= htmlspecialchars($p['name'], ENT_QUOTES, 'UTF-8') ?></h3>
