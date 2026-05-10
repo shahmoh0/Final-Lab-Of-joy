@@ -1,0 +1,94 @@
+/* ============================================================
+   Accessibility Toolbar — Lab of Joy
+   Fixed bar at top of every page
+   ============================================================ */
+
+/* ── Toolbar bar ── */
+#a11yBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background: rgba(30, 20, 50, 0.88);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    flex-wrap: wrap;
+}
+
+/* Push page content below the bar */
+body {
+    padding-top: 46px;
+}
+
+/* ── Label ── */
+#a11yBar .a11yLabel {
+    color: rgba(255,255,255,0.60);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+    white-space: nowrap;
+}
+
+/* ── Buttons ── */
+#a11yBar button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 13px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.20);
+    background: rgba(255,255,255,0.10);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, transform 0.15s;
+    white-space: nowrap;
+    font-family: inherit;
+    margin: 0;
+}
+
+#a11yBar button:hover {
+    background: rgba(255,143,196,0.35);
+    transform: translateY(-1px);
+}
+
+#a11yBar button:focus-visible {
+    outline: 2px solid #ff8fc4;
+    outline-offset: 2px;
+}
+
+/* Active state for high contrast & dyslexia */
+#a11yBar button.a11y-on {
+    background: linear-gradient(135deg, rgba(255,143,196,0.55), rgba(185,162,255,0.55));
+    border-color: rgba(255,255,255,0.40);
+}
+
+/* ── Divider ── */
+#a11yBar .a11yDivider {
+    width: 1px;
+    height: 18px;
+    background: rgba(255,255,255,0.18);
+    margin: 0 2px;
+}
+
+/* ── High contrast mode ── */
+body.hc-mode {
+    filter: contrast(1.5) !important;
+}
+
+/* ── Dyslexia font mode ── */
+body.dyslexia-mode,
+body.dyslexia-mode * {
+    font-family: 'Arial', sans-serif !important;
+    letter-spacing: 0.06em !important;
+    word-spacing: 0.18em !important;
+    line-height: 1.8 !important;
+}
