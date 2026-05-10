@@ -39,6 +39,8 @@ $accessoryImages = [
 <link rel="stylesheet" href="accessories.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="cart_actions.js" defer></script>
+<link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+<script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 
 <body>
@@ -49,11 +51,10 @@ $accessoryImages = [
 
 <nav class="navBar">
 
-<a class="pill" href="categories.php">Categories</a>
+<a class="pill" href="/LabOfJoy/aljury/categories.php">Categories</a>
 <a class="pill" href="/LabOfJoy/munira/box-customization.php">Box Customization</a>
-
 <a class="pill" href="/LabOfJoy/shahad/about.php">About Us</a>
-<a class="pill" href="/LabOfJoy/jana/cart.php">Cart (<?= $cartCount ?>)</a>
+<a class="pill" href="/LabOfJoy/jana/cart.php">🛒 Cart (<?= $cartCount ?>)</a>
 
 </nav>
 </header>
