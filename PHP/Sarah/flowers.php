@@ -29,6 +29,8 @@ $cartCount = getCartCount();
     <title>Flowers - Lab of JOY</title>
     <link rel="stylesheet" href="flowers.css">
     <script src="product_actions.js" defer></script>
+    <link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+    <script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 
 <body>
@@ -37,11 +39,10 @@ $cartCount = getCartCount();
     <h2>Flowers Collection 💐</h2>
 
 <nav class="navBar">
-
 <a class="pill" href="/LabOfJoy/aljury/categories.php">Categories</a>
 <a class="pill" href="/LabOfJoy/munira/box-customization.php">Box Customization</a>
 <a class="pill" href="/LabOfJoy/shahad/about.php">About Us</a>
-<a class="pill" href="/LabOfJoy/jana/cart.php">Cart (<?= $cartCount ?>)</a>
+<a class="pill" href="/LabOfJoy/jana/cart.php">🛒 Cart (<?= $cartCount ?>)</a>
 
 </nav>
 
@@ -74,3 +75,4 @@ $cartCount = getCartCount();
 
 </body>
 </html>
+
