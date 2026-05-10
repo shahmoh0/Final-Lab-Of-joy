@@ -50,6 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/LabOfJoy/fatimah/Home%20%26%20Login.css">
 <script src="login.js" defer></script>
+<link rel="stylesheet" href="/LabOfJoy/accessibility.css">
+<script src="/LabOfJoy/accessibility.js" defer></script>
 </head>
 
 <body>
@@ -90,28 +92,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <input type="password" name="password" placeholder="Enter your password" required>
 <span class="field-error" id="passErr"></span>
 </p>
-
-</fieldset>
-
-<br>
-
-<nav class="siteNav">
-<ul>
-<li><button type="submit" class="btn btnPrimary">✨ Login</button></li>
-</ul>
-</nav>
-
-<p style="margin-top:10px">Don't have an account?
-    <a href="/LabOfJoy/jana/signup.php">Sign Up</a>
-</p>
-
-</form>
-
-</main>
-
-<footer class="siteFooter">
-<p>💝 Personalized gifts made easy with Lab of Joy</p>
-</footer>
-
-</body>
-</html>
